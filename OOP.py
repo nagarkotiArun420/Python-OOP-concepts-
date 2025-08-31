@@ -124,3 +124,44 @@ fish = Fish("Nemo")
 
 hawk.eat()
 
+# Abstraction
+
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+
+    @abstractmethod
+    def go(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+class Car(Vehicle):
+
+    def go(self):
+        print("you drive the car")
+
+    def stop(self):
+        print("You stop the car")
+
+class Motorcycle(Vehicle):
+    def go(self):
+        print("you ride the motorcycle")
+
+    def stop(self):
+        print("You stop the motocycle")
+
+
+class Boat(Vehicle):
+
+    def go(self):
+        print("you sail the boat")
+
+    def stop(self):
+        print("You stop the boat")
+
+boat = Boat()
+boat.go()
+boat.stop()
