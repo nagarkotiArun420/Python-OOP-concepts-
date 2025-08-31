@@ -165,3 +165,66 @@ class Boat(Vehicle):
 boat = Boat()
 boat.go()
 boat.stop()
+
+# Super - allows to extend the fuctionality of a inherited method also lets us inherit the functions
+
+
+
+class Shape:
+    def __init__ (self, color, is_filled):
+        self. color = color
+        self. is_filled = is_filled
+
+    def desc(self):
+        print(f"It is {self.color} and {'filled' if self.is_filled else 'not filled'}")
+        
+class Circle(Shape):
+    def __init__ (self, color, is_filled,radius):
+        super().__init__(color, is_filled ) # Use super to add speical attribute
+        self.radius = radius
+
+    def desc(self):
+        print(f"It is a circle with an area of {3.14 * self.radius * self.radius}") #overrding method
+        super().desc() # Use super to also use parents functions in addition
+
+class Square(Shape):
+    def __init__ (self, color, is_filled,width):
+        super().__init__(color,is_filled) 
+        self.width = width
+
+    def desc(self):
+        print(f"It is a circle with an area of {3.14 * self.width * self.width}") #overrding method
+        super().desc() # Use super to also use parents functions in addition
+
+
+class Triangle(Shape):
+    def __init__ (self, color, is_filled,height, width):
+        super().__init__(color, is_filled)
+        self.height = height
+        self.width = width
+
+    def desc(self):
+        print(f"It is a circle with an area of {3.14 * self.width * self.height / 2}") #overrding method
+        super().desc() # Use super to also use parents functions in addition
+
+
+circle = Circle("red",True,radius=5)
+square = Square("blue",False, width = 9)
+triangle = Triangle("Black",True, height = 10, width = 5)
+
+print(circle.color)
+print(circle.is_filled)
+print(f"THe circle is {circle.radius}")
+circle.desc()
+print ('\n')
+
+print(square.color)
+print(square.is_filled)
+print(f"THe square is {square.width}")
+square.desc()
+print ('\n')
+
+print(triangle.color)
+print(triangle.is_filled)
+print(f"THe triangle is {triangle.height}")
+triangle.desc()
