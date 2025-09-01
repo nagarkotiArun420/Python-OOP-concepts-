@@ -309,3 +309,30 @@ print (library.name)
 
 for book in library.list_books():
     print(book)
+    
+
+# Composition = cannot exist without the parent class
+
+class Engine:
+    def __init__(self, horsepower):
+        self.horsepower = horsepower
+        
+
+class Wheel:
+    def __init__(self, size):
+        self.size = size
+
+class Car:
+    def __init__(self, make, model, horsepower, wheel_size):
+        self.make = make
+        self.model = model
+        self.engine = Engine(horsepower)
+        self.wheels = [ Wheel (wheel_size) for wheel in range(4)]
+
+    def display_car(self):
+        return f"{self.make} {self.model} {self.engine.horsepower}(hp) {self.wheels[0].size}in"
+
+car1 = Car("Ford","Mustang", 500, 18)
+car2 = Car("Chevrolet","Corvette",679,19)
+print(car1.display_car())
+
