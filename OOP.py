@@ -375,4 +375,70 @@ for employee in company1.list_employee():
 
 for employee in company2.list_employee():
     print(employee)
+    
 
+# Static method in python are those methods that belong to class instead of object
+
+
+class Employee:
+
+    def __init__(self,name,position):
+        self.name = name
+        self.position =position
+
+    def get_info(self):
+        return f"{self.name} = {self.position}"
+
+    @staticmethod
+    def is_valid_position(position):
+        valid_position = ["Manager", "Cashier","Cook", "Janitor"]
+        return position in valid_position
+
+
+employee1  = Employee("Eugene","Manager")
+employee2  = Employee("Squidward","Cashier")
+employee3  = Employee("Spongebob","Cook")
+
+
+print(Employee.is_valid_position("Manager"))
+print(employee1.get_info())
+print(employee2.get_info())
+print(employee3.get_info())
+
+
+
+        
+# class Methods  = Allow operations related to the class itself
+
+class Student:
+
+    count = 0
+    total_gpa = 0
+
+    def __init__(self,name,gpa):
+        self.name = name
+        self.gpa = gpa
+        Student.count +=1
+        Student.total_gpa += gpa
+
+    # instance method cuase here it has self as a parameter
+    def get_info(self):
+        return f"{self.name} {self.gpa}"
+
+    @classmethod
+    def get_count(cls):
+         return f"Total # of students: {cls.count}"
+
+    @classmethod
+    def get_average_gpa(cls):
+        if cls.count == 0:
+            return 0
+        else:
+            return f" Average gps: {cls.total_gpa / cls.count:.2f}"
+
+student1 = Student("Spongebob", 3.2)
+student2 = Student("Patrick", 2.0)
+student3 = Student("Sandy",4.0)
+
+print(Student.get_count())
+print(Student.get_average_gpa())
