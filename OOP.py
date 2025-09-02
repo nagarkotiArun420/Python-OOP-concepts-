@@ -442,3 +442,106 @@ student3 = Student("Sandy",4.0)
 
 print(Student.get_count())
 print(Student.get_average_gpa())
+
+
+# Magic method  = Dunder methods (double underscore) __ini__, __str__, __eq__,
+#                 They are authomatically called by many of Python's built-in operations
+#                 They allow developers to define or customize the behaviour of objects
+
+class Book:
+    def __init__(self, title, author, num_pages):
+        self.title = title
+        self.author = author
+        self.num_pages = num_pages
+
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+
+    def __eq__(self, other):
+        return self.title == other.title and self.author == other.author
+
+    def __lt__(self,other): #less than 
+        return self.num_pages < other.num_pages
+
+    def __gt__(self, otherr): # greater than
+        return self.num_pages > other.num_pages
+
+    def __add__(self, other):
+        return self.num_pages + other.num_pages
+
+    def __contains__(self, keyword): # Search for a key word 
+        return keyword in self.title or keyword in self.author
+
+    def __getitem__(self, key):
+        if key == "title":
+            return self.title
+
+        elif key == "author":
+            return self.author
+
+        elif key == "num_pages":
+            return self.num_pages
+        else: 
+            return f"Key{key} was not found"
+        
+        
+
+book1 = Book("The hobbit",'J.R.R', 310)
+book2 = Book("SL","jinwoo",120)
+book3 = Book("TBATE hello","jinwoo",344)
+
+print(book3['num_pages'])
+
+
+# @Property = Decorator is used to define a method as a property (it can be accessed like an)
+# attribute) So instead of calling rectangle.width(), you can just do rectangle.width.
+# Benefits = Add additional logic when read, write, or delete attributes
+# Gives you getter, setter, deleter method
+
+class Rectangle:
+    def __init__ (self, width, height):
+        self._width = width
+        self._height = height
+        
+    @property # property decorater lets us to use method as attribute instead of calling rectangle.width(), you can just do rectangle.width.
+    def width(self):
+        return f"{self._width} inch"
+        
+    @property
+    def height(self):
+         return f"{self._height} inch"
+
+    @width.setter
+    def width(self, new_width):
+        if new_width > 0:
+            self._width = new_width
+        else:
+            print("Width must be greater than zero")
+
+    @height.setter
+    def height(self, new_height):
+        if new_height > 0:
+            self._height = new_height
+        else:
+            print("height must be greater than zero")
+
+    @width.deleter
+    def width(self):
+        del self._width
+        print("Width has been deleted")
+
+
+    @height.deleter
+    def height(self):
+        del self._height
+        print("height has been deleted")
+
+
+rectangle = Rectangle(6,6)
+
+rectangle.width = 6
+rectangle.height = 7
+
+del rectangle.width
+del rectangle.height
+
