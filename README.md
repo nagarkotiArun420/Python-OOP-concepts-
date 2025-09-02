@@ -6,36 +6,50 @@ This repository contains comprehensive examples demonstrating key Object-Oriente
 
 📚 **Table of Contents**
 
-* Features
-* Code Examples
-* Getting Started
-* Concepts Covered
-* Usage
-* Contributing
-* License
+- [🚀 Features](#-features)  
+- [📋 Code Examples](#-code-examples)  
+  - [Class Creation and Object Initialization](#class-creation-and-object-initialization)  
+  - [Class Variables](#class-variables)  
+  - [Inheritance](#inheritance)  
+  - [Abstraction](#abstraction)  
+  - [Method Overriding & super()](#method-overriding--super)  
+  - [Polymorphism](#polymorphism)  
+  - [Aggregation](#aggregation)  
+  - [Composition](#composition)  
+  - [Nested Classes](#nested-classes)  
+  - [Static Methods](#static-methods)  
+  - [Class Methods](#class-methods)  
+  - [Magic Methods](#magic-methods)  
+  - [Property Decorator](#property-decorator)  
+- [🏃‍♂️ Getting Started](#-getting-started)  
+- [🎯 Concepts Covered](#-concepts-covered)  
+- [🖥 Usage / Expected Output](#-usage--expected-output)  
+- [🤝 Contributing](#-contributing)  
+- [📝 License](#-license)  
 
 ---
 
 ## 🚀 Features
 
-* **Class Creation & Object Initialization**: Create classes, constructors, and object methods
-* **Instance & Class Variables**: Differentiate between instance and shared class-level attributes
-* **Inheritance**: Demonstrates single, multilevel, and multiple inheritance
-* **Abstraction**: Using abstract base classes with `abc`
-* **Method Overriding & super()**: Extend parent methods while customizing behavior
-* **Polymorphism**: Implement shared interfaces across different classes
-* **Aggregation**: Objects referencing other independent objects
-* **Composition**: Objects composed of dependent sub-objects
-* **Nested Classes**: Classes defined inside other classes
-* **Static Methods**: Utility functions tied to the class, not instances
-* **Class Methods**: Operate on class-level data rather than individual instances
+* **Class Creation & Object Initialization**: Create classes, constructors, and object methods  
+* **Instance & Class Variables**: Differentiate between instance and shared class-level attributes  
+* **Inheritance**: Demonstrates single, multilevel, and multiple inheritance  
+* **Abstraction**: Using abstract base classes with `abc`  
+* **Method Overriding & super()**: Extend parent methods while customizing behavior  
+* **Polymorphism**: Implement shared interfaces across different classes  
+* **Aggregation**: Objects referencing other independent objects  
+* **Composition**: Objects composed of dependent sub-objects  
+* **Nested Classes**: Classes defined inside other classes  
+* **Static Methods**: Utility functions tied to the class, not instances  
+* **Class Methods**: Operate on class-level data rather than individual instances  
+* **Magic Methods (Dunder Methods)**: Customize object behavior with `__str__`, `__eq__`, `__lt__`, etc.  
+* **Property Decorator**: Manage attributes with getters, setters, and deleters  
 
 ---
 
 ## 📋 Code Examples
 
 ### Class Creation and Object Initialization
-
 ```python
 class Car:
     def __init__(self, model, year, colour, for_sale):
@@ -51,17 +65,7 @@ class Car:
         print("You stop the car")
 ```
 
-**Key Features:**
-
-* Constructor method (`__init__`)
-* Instance variables
-* Object methods
-* Object creation and method calling
-
----
-
 ### Class Variables
-
 ```python
 class Student:
     class_year = 2024
@@ -73,18 +77,7 @@ class Student:
         Student.num_students += 1
 ```
 
-**Key Features:**
-
-* Class variables vs instance variables
-* Automatic counting of objects
-* Shared attributes across all instances
-
----
-
 ### Inheritance
-
-**Single Inheritance Example:**
-
 ```python
 class Animal:
     def __init__(self, name):
@@ -96,41 +89,7 @@ class Dog(Animal):
         print("woof")
 ```
 
-**Multilevel and Multiple Inheritance:**
-
-```python
-class Animal:
-    def __init__(self, name):
-        self.name = name
-
-class Prey(Animal):
-    def flee(self):
-        print("The animal is fleeing")
-
-class Predator(Animal):
-    def hunt(self):
-        print("The animal is hunting")
-
-class Rabbit(Prey):
-    pass
-
-class Hawk(Predator):
-    pass
-
-class Fish(Prey, Predator):
-    pass
-```
-
-**Key Features:**
-
-* Parent-child relationship
-* Grandparent → Parent → Child hierarchy
-* Multiple inheritance and method resolution order (MRO)
-
----
-
 ### Abstraction
-
 ```python
 from abc import ABC, abstractmethod
 
@@ -142,23 +101,9 @@ class Vehicle(ABC):
     @abstractmethod
     def stop(self):
         pass
-
-class Car(Vehicle):
-    def go(self):
-        print("you drive the car")
-    def stop(self):
-        print("You stop the car")
 ```
 
-**Key Features:**
-
-* Abstract base class (`ABC`)
-* Enforced implementation of abstract methods in subclasses
-
----
-
 ### Method Overriding & `super()`
-
 ```python
 class Shape:
     def __init__(self, color, is_filled):
@@ -178,15 +123,7 @@ class Circle(Shape):
         super().desc()
 ```
 
-**Key Features:**
-
-* Method overriding
-* Using `super()` to reuse parent methods
-
----
-
 ### Polymorphism
-
 ```python
 class Shape(ABC):
     @abstractmethod
@@ -205,15 +142,7 @@ class Pizza(Circle):
         self.toppings = toppings
 ```
 
-**Key Features:**
-
-* Common interface (`area()`)
-* Different implementations across subclasses
-
----
-
 ### Aggregation
-
 ```python
 class Library:
     def __init__(self, name):
@@ -229,15 +158,7 @@ class Book:
         self.author = author
 ```
 
-**Key Features:**
-
-* Objects (Books) exist independently of the Library
-* Library contains references to Book objects
-
----
-
 ### Composition
-
 ```python
 class Engine:
     def __init__(self, horsepower):
@@ -255,15 +176,7 @@ class Car:
         self.wheels = [Wheel(wheel_size) for _ in range(4)]
 ```
 
-**Key Features:**
-
-* Car cannot exist without its Engine and Wheels
-* Strong lifecycle dependency
-
----
-
 ### Nested Classes
-
 ```python
 class Company:
     class Employee:
@@ -280,15 +193,7 @@ class Company:
         self.employees.append(new_employee)
 ```
 
-**Key Features:**
-
-* Class defined inside another class
-* Useful for logically grouping related functionality
-
----
-
 ### Static Methods
-
 ```python
 class Employee:
     @staticmethod
@@ -297,15 +202,7 @@ class Employee:
         return position in valid_positions
 ```
 
-**Key Features:**
-
-* Utility methods tied to the class itself
-* No access to `self` or `cls`
-
----
-
 ### Class Methods
-
 ```python
 class Student:
     count = 0
@@ -326,40 +223,79 @@ class Student:
         return f"Average GPA: {cls.total_gpa / cls.count:.2f}" if cls.count else 0
 ```
 
-**Key Features:**
+### Magic Methods
+```python
+class Book:
+    def __init__(self, title, author, num_pages):
+        self.title = title
+        self.author = author
+        self.num_pages = num_pages
 
-* Operates on class-level data
-* Can be used to compute aggregates like student count and average GPA
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+
+    def __eq__(self, other):
+        return self.title == other.title and self.author == other.author
+
+    def __lt__(self, other):
+        return self.num_pages < other.num_pages
+
+    def __add__(self, other):
+        return self.num_pages + other.num_pages
+
+    def __contains__(self, keyword):
+        return keyword in self.title or keyword in self.author
+```
+
+### Property Decorator
+```python
+class Rectangle:
+    def __init__(self, width, height):
+        self._width = width
+        self._height = height
+
+    @property
+    def width(self):
+        return f"{self._width} inch"
+
+    @width.setter
+    def width(self, value):
+        if value <= 0:
+            raise ValueError("Width must be greater than 0")
+        self._width = value
+
+    @property
+    def height(self):
+        return f"{self._height} inch"
+
+    @height.setter
+    def height(self, value):
+        if value <= 0:
+            raise ValueError("Height must be greater than 0")
+        self._height = value
+
+    @property
+    def area(self):
+        return f"{self._width * self._height} square inch"
+
+    @height.deleter
+    def height(self):
+        del self._height
+```
 
 ---
 
 ## 🏃‍♂️ Getting Started
 
 **Prerequisites:**
-
-* Python 3.x installed
-* Basic understanding of programming concepts
+* Python 3.x installed  
 
 **Running the Code:**
-
 ```bash
 git clone [your-repository-url]
 cd python-oop-examples
 python main.py
 ```
-
-**Expected Output:**
-
-* Car object creation and method execution
-* Student class variable tracking
-* Inheritance examples with Animal hierarchy
-* Shapes with `super()` and overridden methods
-* Polymorphism with shared `area()` method
-* Aggregation (Library & Books)
-* Composition (Car with Engine & Wheels)
-* Nested Class (Company & Employees)
-* Static Method validation
-* Class Method for student statistics
 
 ---
 
@@ -383,27 +319,44 @@ python main.py
 | Nested Classes         | Classes inside other classes              | `Company.Employee`           |
 | Static Methods         | Class utility methods                     | `Employee.is_valid_position` |
 | Class Methods          | Work with class-level data                | `Student.get_count()`        |
+| Magic Methods          | Customize object behavior                 | `__str__`, `__eq__`, `__add__`|
+| Property Decorator     | Getter, Setter, Deleter as attributes     | `Rectangle.width`            |
+
+---
+
+## 🖥 Usage / Expected Output
+
+Running `main.py` will demonstrate:  
+* Car creation & driving  
+* Student count and GPA tracking  
+* Inheritance with animals  
+* Shapes using `super()`  
+* Polymorphism with `area()`  
+* Library aggregation with books  
+* Car composition with Engine & Wheels  
+* Nested classes in Company  
+* Static and Class methods  
+* Magic methods (`book1 + book2`, `keyword in book`)  
+* Property decorator (`rectangle.width`, `del rectangle.height`)  
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to:
-
-* Add new OOP examples
-* Improve documentation
-* Fix bugs or issues
-* Suggest new features or concepts
+Contributions are welcome! Feel free to:  
+* Add new OOP examples  
+* Improve documentation  
+* Fix issues or suggest improvements  
 
 ---
 
 ## 📝 License
 
-This project is open source and available under the MIT License.
+This project is open source and available under the MIT License.  
 
 ---
 
-📞 **Contact**
-If you have any questions or suggestions, please open an issue in this repository.
+📞 **Contact**  
+If you have any questions or suggestions, please open an issue in this repository.  
 
 **Happy Learning! 🐍✨**
